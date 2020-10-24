@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "100936158246",
+    "firebase_url": "https://papacalls-5dad2.firebaseio.com",
+    "project_id": "papacalls-5dad2",
+    "storage_bucket": "papacalls-5dad2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100936158246:android:f58ce59b6698ebb5d7eae7",
+        "android_client_info": {
+          "package_name": "com.example.papacalls"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100936158246-9unq30048pjov9alnq6gqtdml6jbb960.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM1munxjivGWorVM30JaWuQH_XpkCyuUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100936158246-9unq30048pjov9alnq6gqtdml6jbb960.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
