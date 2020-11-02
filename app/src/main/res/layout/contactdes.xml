@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 
 
     android:layout_marginLeft="25dp"
@@ -14,30 +14,54 @@
     <RelativeLayout
         android:id="@+id/cardview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#9EFDA1">
 
 
         <TextView
             android:id="@+id/Namecont"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Username "
-            android:textSize="20dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/callbtn"
 
             />
 
-        <Button
-            android:id="@+id/callacc"
-            android:layout_width="90dp"
-            android:layout_height="45dp"
-            android:layout_below="@+id/Namecont"
+        <ImageButton
+            android:id="@+id/messbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="9dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="7dp"
-            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:layout_marginRight="5dp"
+            android:background="@drawable/mess"
             android:padding="5dp"
-            android:text="Call User" />
+            />
+
+        <ImageButton
+            android:id="@+id/callbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/messbtn"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:layout_marginRight="10dp"
+            android:background="@drawable/videocall"
+            android:padding="5dp"
+             />
+
+
+
+
     </RelativeLayout>
 
 

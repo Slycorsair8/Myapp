@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 import com.opentok.android.OpentokError;
 import com.opentok.android.Publisher;
@@ -28,11 +31,19 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
 
     private Session session;
 
+
+
     private FrameLayout PublisherContainer;
     private FrameLayout SubscriberContainer;
 
     private Publisher publisher;
     private Subscriber subscriber;
+    private int x=0;
+    private ImageButton callcancelBTN;
+    private ImageButton messBTN;
+    private ImageButton audioBTN;
+
+    private int z=0;
 
 
 
@@ -41,13 +52,60 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        requestPermissions();
-    PublisherContainer= (FrameLayout)findViewById(R.id.publisher_container);
-    SubscriberContainer= (FrameLayout)findViewById(R.id.subscriber_container);
+            requestPermissions();
 
+    PublisherContainer= findViewById(R.id.publisher_container);
+    SubscriberContainer=findViewById(R.id.subscriber_container);
 
+    callcancelBTN= findViewById(R.id.callcancelbtn);
+    messBTN= findViewById(R.id.messbtn);
+    audioBTN= findViewById(R.id.audiocall);
+
+    callcancelBTN.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            x=0;
+            z=0;
+
+            session.disconnect();
+            startActivity(new Intent(Main.this,MainActivity.class));
+            finish();
+        }
+    });
+
+        messBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(z%2==0) {
+                    z++;
+                    publisher.setPublishAudio(false);
+
+                }
+                else
+                {
+                    z++;
+                    publisher.setPublishAudio(true);
+                }}
+        });
+
+        audioBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            if(x%2==0) {
+                x++;
+                publisher.setPublishVideo(false);
+
+            }
+            else
+            {
+                x++;
+                publisher.setPublishVideo(true);
+            }
+            }
+        });
     }
-
         @Override
         public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -60,17 +118,19 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
         String[] perm={Manifest.permission.INTERNET, Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO};
         if(EasyPermissions.hasPermissions(this,perm))
         {
-          session= new Session.Builder(this, API_KEY, Session_ID).build();
-          session.setSessionListener(Main.this);
-          session.connect(Token);
-        }
-        else
+
+                session = new Session.Builder(this, API_KEY, Session_ID).build();
+                session.setSessionListener(Main.this);
+                session.connect(Token);
+
+            }
+
+         else
         {
             EasyPermissions.requestPermissions(this,"",RC_SETTINGS,perm);
         }
 
         }
-
 
     @Override
     public void onConnected(Session session) {
@@ -89,7 +149,8 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
 
     @Override
     public void onDisconnected(Session session) {
-
+    startActivity(new Intent(Main.this,MainActivity.class));
+    finish();
     }
 
     @Override
@@ -100,6 +161,8 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
          session.subscribe(subscriber);
          SubscriberContainer.addView(subscriber.getView());
      }
+
+
     }
 
     @Override
@@ -109,6 +172,7 @@ if(subscriber!=null)
     subscriber=null;
     SubscriberContainer.removeAllViews();
 }
+        startActivity(new Intent(Main.this,MainActivity.class));
     }
 
     @Override
