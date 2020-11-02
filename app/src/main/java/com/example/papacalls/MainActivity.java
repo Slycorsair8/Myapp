@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser cuser = FirebaseAuth.getInstance().getCurrentUser();
         if(cuser != null) {
-            startActivity(new Intent(MainActivity.this,FindContact.class));
+            startActivity(new Intent(MainActivity.this, UsersList.class));
         finish();
         }
         }
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                    {
                        Toast.makeText(MainActivity.this, "You are logged in",
                                Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(MainActivity.this,FindContact.class));
+                       startActivity(new Intent(MainActivity.this, UsersList.class));
 
                    }
                    else

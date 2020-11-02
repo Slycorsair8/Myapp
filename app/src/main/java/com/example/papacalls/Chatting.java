@@ -1,24 +1,18 @@
 package com.example.papacalls;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,7 +41,7 @@ public class Chatting extends AppCompatActivity {
 
     private final List<Messages> messagesList = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
-    private MessageAdapter messageAdapter;
+    private Loadmess messageAdapter;
     private RecyclerView userMessagesList;
 
     private ImageButton callbtn;
@@ -73,7 +67,7 @@ public class Chatting extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(Chatting.this,Main.class));
+                startActivity(new Intent(Chatting.this, CallActivity.class));
             }
         });
 
@@ -92,7 +86,7 @@ public class Chatting extends AppCompatActivity {
          SendMessageButton = findViewById(R.id.send_message_btn);
          MessageInputText =  findViewById(R.id.input_message);
 
-         messageAdapter = new MessageAdapter(messagesList);
+         messageAdapter = new Loadmess(messagesList);
          userMessagesList = findViewById(R.id.private_messages_list_of_users);
          linearLayoutManager = new LinearLayoutManager(this);
          userMessagesList.setLayoutManager(linearLayoutManager);

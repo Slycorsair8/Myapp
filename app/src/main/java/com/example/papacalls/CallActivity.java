@@ -21,12 +21,12 @@ import com.opentok.android.Subscriber;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class Main extends AppCompatActivity implements Session.SessionListener, PublisherKit.PublisherListener {
+public class CallActivity extends AppCompatActivity implements Session.SessionListener, PublisherKit.PublisherListener {
 
     private static String API_KEY= "46962484";
     private static String Session_ID= "1_MX40Njk2MjQ4NH5-MTYwMzQ0OTU3Njg2MX5QWFRCZ3dBWjIrclR0ZDA5QzJ4SVcwSXl-fg";
     private static String Token= "T1==cGFydG5lcl9pZD00Njk2MjQ4NCZzaWc9MzBiM2Y0OTFjMTZlZTNiN2UxMTAxYmRlYjEwNmYwZjZiNTU3ODdkMTpzZXNzaW9uX2lkPTFfTVg0ME5qazJNalE0Tkg1LU1UWXdNelEwT1RVM05qZzJNWDVRV0ZSQ1ozZEJXaklyY2xSMFpEQTVReko0U1Zjd1NYbC1mZyZjcmVhdGVfdGltZT0xNjAzNDQ5NzAyJm5vbmNlPTAuMDI1Mjg2NjEwMjQ1NTA3Mzgmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTYwNjA0NTMwMCZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==";
-    private static String Log_Tag=Main.class.getSimpleName();
+    private static String Log_Tag= CallActivity.class.getSimpleName();
     private static final int RC_SETTINGS = 123;
 
     private Session session;
@@ -68,7 +68,7 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
             z=0;
 
             session.disconnect();
-            startActivity(new Intent(Main.this,MainActivity.class));
+            startActivity(new Intent(CallActivity.this,MainActivity.class));
             finish();
         }
     });
@@ -120,7 +120,7 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
         {
 
                 session = new Session.Builder(this, API_KEY, Session_ID).build();
-                session.setSessionListener(Main.this);
+                session.setSessionListener(CallActivity.this);
                 session.connect(Token);
 
             }
@@ -136,7 +136,7 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
     public void onConnected(Session session) {
 
     publisher = new Publisher.Builder(this).build();
-    publisher.setPublisherListener(Main.this);
+    publisher.setPublisherListener(CallActivity.this);
 
     PublisherContainer.addView(publisher.getView());
 
@@ -149,7 +149,7 @@ public class Main extends AppCompatActivity implements Session.SessionListener, 
 
     @Override
     public void onDisconnected(Session session) {
-    startActivity(new Intent(Main.this,MainActivity.class));
+    startActivity(new Intent(CallActivity.this,MainActivity.class));
     finish();
     }
 
@@ -172,7 +172,7 @@ if(subscriber!=null)
     subscriber=null;
     SubscriberContainer.removeAllViews();
 }
-        startActivity(new Intent(Main.this,MainActivity.class));
+        startActivity(new Intent(CallActivity.this,MainActivity.class));
     }
 
     @Override

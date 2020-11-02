@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Chatting"></activity>
-        <activity android:name=".Main"
+        <activity android:name=".CallActivity"
 
             />
-        <activity android:name=".FindContact" />
+        <activity android:name=".UsersList" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />

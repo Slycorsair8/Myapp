@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class FindContact extends AppCompatActivity {
+public class UsersList extends AppCompatActivity {
 
 
     private RecyclerView findFriendsL;
@@ -49,7 +49,7 @@ public class FindContact extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(FindContact.this,MainActivity.class));
+                startActivity(new Intent(UsersList.this,MainActivity.class));
                 finish();
             }
         });
@@ -120,7 +120,7 @@ public class FindContact extends AppCompatActivity {
                     String visit_user_id = getRef(position).getKey();
 
 
-                    Intent intent = new Intent(FindContact.this, Chatting.class);
+                    Intent intent = new Intent(UsersList.this, Chatting.class);
                     intent.putExtra("visit_user_id", visit_user_id);
                     intent.putExtra("profile_name",model.getName());
                     startActivity(intent);
@@ -137,7 +137,7 @@ public class FindContact extends AppCompatActivity {
 
 
 
-                    startActivity(new Intent(FindContact.this,Main.class));
+                    startActivity(new Intent(UsersList.this, CallActivity.class));
                 }
 
 
